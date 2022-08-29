@@ -1,6 +1,7 @@
 package br.com.fiap;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -21,6 +22,25 @@ public class PrimaryController {
     private List<Veiculo> lista = new ArrayList<>();
 
     public void salvar(){
+        var veiculo = carregarVeiculoDoFormulario();
+        lista.add(veiculo);
+
+        mostrarAlerta("Veículo cadastrado com sucesso");
+
+        limparFormulario();
+
+        listView.getItems().add(veiculo);
+    }
+
+    private void limparFormulario(){
+        textFieldMarca.setText("");
+        textFieldModelo.setText("");
+        textFieldPreco.setText("");
+        textFieldAno.setText("");
+        textFieldPlaca.setText("");
+    }
+
+    private Veiculo carregarVeiculoDoFormulario(){
         //TODO tratar erro de conversão
         String marca = textFieldMarca.getText();
         String modelo = textFieldModelo.getText();
@@ -29,18 +49,28 @@ public class PrimaryController {
         String placa = textFieldPlaca.getText();
 
         Veiculo veiculo = new Veiculo(marca, modelo, ano, preco, placa);
-        lista.add(veiculo);
+        return veiculo;
+    }
 
+    private void mostrarAlerta(String mensagem){
         Alert alerta = new Alert(AlertType.INFORMATION);
-        alerta.setContentText("Veículo cadastrado com sucesso");
+        alerta.setContentText(mensagem);
         alerta.show();
+    }
 
-        textFieldMarca.setText("");
-        textFieldModelo.setText("");
-        textFieldPreco.setText("");
-        textFieldAno.setText("");
-        textFieldPlaca.setText("");
+    public void ordernarPorPreco(){
+        //arrow function - funções lambda
+        lista.sort((o1, o2) -> Double.compare(o1.getPreco(), o2.getPreco()) );
+        atualizarLista();
+    }
 
+    public void ordenarPorAno(){
+        lista.sort((o1, o2) -> Integer.compare(o1.getAno(), o2.getAno()));
+        atualizarLista();
+    }
+
+    private void atualizarLista(){
+        listView.getItems().clear();
         listView.getItems().addAll(lista);
     }
     
