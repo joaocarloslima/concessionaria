@@ -1,6 +1,8 @@
-package br.com.fiap;
+package br.com.fiap.util;
 
 import java.util.Comparator;
+
+import br.com.fiap.model.Veiculo;
 
 public class ComparadorPorAno implements Comparator<Veiculo> {
 

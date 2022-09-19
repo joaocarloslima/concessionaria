@@ -1,4 +1,4 @@
-package br.com.fiap;
+package br.com.fiap.model;
 
 public class Veiculo implements Comparable<Veiculo> {
     // BO BEAN Model POJO Entity Resource
