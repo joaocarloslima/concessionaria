@@ -33,13 +33,13 @@ public class PrimaryController {
     public void salvar(){
         try {
             veiculoDao.inserir(carregarVeiculoDoFormulario());
+            mostrarAlerta("Veículo cadastrado com sucesso");
+            limparFormulario();
         } catch (SQLException e) {
             mostrarAlerta("Erro de SQL. " + e.getMessage());
         }
        
-        mostrarAlerta("Veículo cadastrado com sucesso");
 
-        limparFormulario();
     }
 
     private void limparFormulario(){

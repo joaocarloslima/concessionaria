@@ -6,14 +6,17 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fiap.PrimaryController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fiap.controller.PrimaryController">
   <tabs>
     <Tab text="Cadastro">
          <content>
@@ -85,5 +88,33 @@
                </top>
             </BorderPane>
          </content></Tab>
+      <Tab text="Clientes">
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <TableView prefHeight="289.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Nome" />
+                      <TableColumn prefWidth="75.0" text="Email" />
+                        <TableColumn prefWidth="75.0" text="Telefone" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </center>
+               <top>
+                  <HBox alignment="CENTER" prefHeight="37.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField promptText="nome" />
+                        <TextField promptText="email" />
+                        <TextField promptText="telefone" />
+                        <Button defaultButton="true" mnemonicParsing="false" text="Salvar" />
+                     </children>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </content>
+      </Tab>
   </tabs>
 </TabPane>
